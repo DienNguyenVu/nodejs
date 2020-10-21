@@ -1,0 +1,52 @@
+<h3></h3>
+<h3><%= JSON.stringify(dataDepartment) %></h3>
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                Form
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="alert alert-danger" role="alert">
+                            <ul>
+                                <li>Name: không được rỗng</li>
+                                <li>Status: chọn một trạng thái</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-6">
+                        
+                        <form role="form" action="<%= systemConfig.prefixAdmin %>/department/edit/<%= dataDepartment.id %>" method="post">
+                            <div class="form-group">
+                                <label>Name</label>
+                                <input class="form-control" type="text" name="name" value="<%= dataDepartment.name %>">
+                            </div>
+                            <div class="form-group">
+                                <label>Numberphone</label>
+                                <input class="form-control" type="tel" name="numberphone" value="<%= dataDepartment.numberphone %>">
+                            </div>
+                            <div class="form-group">
+                                <label>Born</label>
+                                <input class="form-control" type="text" name="address" value="<%= dataDepartment.address %>">
+                            </div>
+                           
+                            <!-- <div class="form-group">
+                                <label>Content</label>
+                                    <textarea class="form-control" name="content" rows="2"  id="content_ck" ></textarea>
+                                </div> 
+                            -->
+                            <input class="form-control" name="id" value="" type="hidden">
+                            <button type="submit" class="btn btn-primary">Submit </button>
+                            <a type="button" href="<%= systemConfig.prefixAdmin %>/department" class="btn btn-default">Cancel</a>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,158 @@
+<h3><%= JSON.stringify(dataEmployees) %></h3>
+
+<h3><%- locals.flash %></h3>
+
+<div class="row">
+  <div class="col-lg-12">
+    <div class="panel panel-info">
+      <div class="panel-heading">
+        Search & Filter
+        <a href="">
+          <span id="icon-reload" class="glyphicon glyphicon-refresh"></span>
+        </a>
+      </div>
+      <div class="panel-body">
+        <div class="row">
+          <div class="status-list col-sm-6 pl0">
+          </div>
+          <div class="col-sm-6">
+            <form action="" method="GET">
+              <div class="input-group">
+            </form>
+            <input type="text" class="form-control" name="keyword" placeholder="Search for..." value="<%= keyword  %>">
+            <input type="hidden" value="all">
+            <span class="input-group-btn">
+              <button class="btn btn-info" type="submit">Search</button>
+            </span>
+            <span class="input-group-btn">
+              <button class="btn btn-success" type="button"><a href="">Clear</a></button>
+            </span>
+          </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="col-lg-12">
+  <div class="panel panel-info">
+    <div class="panel-heading">
+      List Items
+    </div>
+    <!-- /.panel-heading -->
+    <div class="panel-body">
+      <form role="form" class="form-inline zt-form" id="zt-form" action="" method="post">
+        <div class="zcontrols">
+          <select name="action" class="form-control slbAction">
+            <option value="">Bulk Action</option>
+            <option value="">
+              Active
+            </option>
+            <option value="">
+              InActive
+            </option>
+            <option value="">
+              Change Ordering
+            </option>
+            <option value="">
+              Delete
+            </option>
+          </select>
+          <button class="btn btn-info btnAction" type="button" id="btn-action" value="btnAction" disabled>Apply</button>
+          <div class="pull-right">
+            <a href="<%= systemConfig.prefixAdmin %>/employees/add" class="btn btn-warning btn-addNew">Add New
+            </a>
+          </div>
+        </div>
+
+        <div class="table-responsive">
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>
+                  <input type="checkbox" class="cbAll" />
+                </th>
+                <th>#</th>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Birthday</th>
+                <th>Born</th>
+                <th>sex</th>
+                <th>Nation</th>
+                <th>Numberphone</th>
+                <th>Position</th>
+                <th>Literacy</th>
+                <th>Description</th>
+                <th>Day at word</th>
+                <th>Wage</th>
+                <th>Created</th>
+                <th>Modified</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% dataEmployees.forEach((employee,index)=>{%>
+              <tr>
+                <td>
+                  <input type="checkbox" name="cid" value="<%= employee.id %>" />
+                </td>
+                <td>
+                  <%= index + 1 %>
+                </td>
+                <td>1</td>
+                <td>
+                   <a href="#"><%= employee.name %></a>
+                </td>
+                <td>
+                  <%= employee.birthday %>
+                </td>
+                <td>
+                  <%= employee.born %>
+                </td>
+                <td>
+                  <%= employee.sex %>
+                </td>
+                <td>
+                  <%= employee.nation %>
+                </td>
+                <td>
+                  <%= employee.numberphone %>
+                </td>
+                <td>
+                  <%= employee.position %>
+                </td>
+                <td>
+                  <%= employee.literacy %>
+                </td>
+                <td>
+                  <%= employee.wage %>
+                </td>
+                <td>a</td>
+                <td> ngày vao làm</td>
+                <td>
+                  <span class="glyphicon glyphicon-user" aria-hidden="true"></span>1 <br>
+                  <span class="glyphicon glyphicon-time" aria-hidden="true"></span>2
+                </td>
+                <td>
+                  <span class="glyphicon glyphicon-user" aria-hidden="true"></span>1 <br>
+                  <span class="glyphicon glyphicon-time" aria-hidden="true"></span>2
+                </td>
+                <td>
+                  <a href="<%= systemConfig.prefixAdmin %>/employees/edit/<%= employee.id %>" type="button" class="btn btn-warning btn-sm">Edit</a>
+                  <a href="" type="button" class="btn btn-danger btn-sm btn-delete">Delete</a>
+                </td>
+              </tr>
+              <% }) %>
+            </tbody>
+          </table>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<div class="col-lg-12">
+  <% include ./../../helpers/pagi_employ/pagination %>
+  <%- paginationHelper(pagination ,'employees', keyword) %>
+</div>
+</div>
